@@ -1,10 +1,12 @@
 {{define "body"}}
+    {{.Title}}
     Hello world
-   <div id="todo_items">
-       <div class="todo_item">Cat</div>
-       <div class="todo_item">Dog</div>
-       <div class="todo_item">Giraffe</div>
-       <div class="todo_item">Zebra</div>
-       <div class="todo_item">Elephant</div>
-   </div>
+    <div id="todo_items">
+        {{range $index, $element := .TodoItems}}
+            <div class="todo_item">
+                {{$index}}: {{$element.Name}} ::
+                <a href='/view/{{$index}}'>View {{$index}}</a>
+            </div>
+        {{end}}
+    </div>
 {{end}}
